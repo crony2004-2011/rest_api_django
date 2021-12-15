@@ -21,4 +21,13 @@ class Person(models.Model):
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
+        return self.course
+    
+class Client(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    enrolled = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True)
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
         return self.name
