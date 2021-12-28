@@ -10,10 +10,12 @@ from rest_framework import status
 from django.http import *
 from rest_framework.parsers import JSONParser
 from .serializers import PersonSerializer, ClientSerializer
-from rest_framework import serializers
+from rest_framework.mixins import *
+from rest_framework.generics import GenericAPIView
+from rest_framework.authentication import SessionAuthentication, BaseAuthentication
+from rest_framework.permissions import IsAuthenticated
 # Create your view
-@permission_classes((permissions.AllowAny,))
-@api_view(['GET','POST'])
+#@api_view(['GET','POST'])
 #api_view will replace the function based api view, so we will not need to use the function 
 #based http request and we dont need to give out jsonresponse
 #In api_view, we do not need to parse the data in post/put methods and use request.data
@@ -97,10 +99,29 @@ class PersonDetailViewAPI(APIView):
         client.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
         
-        
-        
     
-        
+#Generic Views
+class GenericAPI(GenericAPIView, CreateModelMixin):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    #pk not requeired for creating things, so we do not take create to the other function
+    
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+    
+class GenericAPIpk(GenericAPIView, ListModelMixin, UpdateModelMixin,DestroyModelMixin):
+    #get specific value in get function according to pk
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    lookup_field = 'id'
+    #authentication_classes = [SessionAuthentication, BaseAuthentication]
+    #permission_classes = [IsAuthenticated]
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+    
+    
+
+    
         
         
 
