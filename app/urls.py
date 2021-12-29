@@ -9,6 +9,7 @@ urlpatterns = [
     path('clients/', views.PersonViewAPI.as_view()),
     path('clients-detail/<int:pk>/', views.PersonDetailViewAPI.as_view()),
     path('clients-generic-create/', views.GenericAPI.as_view()),
-    path('clients-generic-create/<int:pk>/', views.GenericAPIpk.as_view()),
+    path('clients-generic-create/<int:id>/', views.GenericAPIpk.as_view()),
+    #in generic views pk will get listed in the look_up filed attribute in get and put functions can interpret it differnetly
 ]
 

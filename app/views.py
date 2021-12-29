@@ -63,7 +63,7 @@ def update(request,pk):
     elif request.method == 'DELETE':
         person.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
+
 #class based views 
 
 class PersonViewAPI(APIView):
@@ -86,20 +86,19 @@ class PersonDetailViewAPI(APIView):
         serializer = ClientSerializer(client)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-    def put(self,request,pk):
-        client = Client.objects.get(id=pk)
-        serializer = ClientSerializer(client, data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    # def put(self,request,pk):
+    #     client = Client.objects.get(id=pk)
+    #     serializer = ClientSerializer(client, data = request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self,request,pk):
         client = Client.objects.get(id=pk)
         client.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
         
-    
 #Generic Views
 class GenericAPI(GenericAPIView, CreateModelMixin):
     queryset = Client.objects.all()
@@ -109,15 +108,26 @@ class GenericAPI(GenericAPIView, CreateModelMixin):
     def post(self,request,*args,**kwargs):
         return self.create(request,*args,**kwargs)
     
-class GenericAPIpk(GenericAPIView, ListModelMixin, UpdateModelMixin,DestroyModelMixin):
+class GenericAPIpk(GenericAPIView,RetrieveModelMixin, ListModelMixin,
+                   CreateModelMixin, UpdateModelMixin,DestroyModelMixin):
     #get specific value in get function according to pk
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     lookup_field = 'id'
     #authentication_classes = [SessionAuthentication, BaseAuthentication]
     #permission_classes = [IsAuthenticated]
-    def get(self,request,*args,**kwargs):
-        return self.list(request,*args,**kwargs)
+    
+    def get(self,request,id=None):
+        #in get function with the generic class we use self.list
+        if id:
+            return self.retrieve(request)
+        else:
+            return self.list(request)
+    def post(self,request,*args,**kwargs):
+        #in post function, we use self.create
+        return self.create(request)
+    def put(self,request,id=None,*args,**kwargs):
+        return self.update(request,id)
     
     
 
