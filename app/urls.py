@@ -14,11 +14,3 @@ urlpatterns = [
     path('class/<int:pk>', views.Personclassapi.as_view()),
     path('filter/', views.Personfilterapi.as_view()),
 ]
-
-# {
-#     "id": 10,
-#     "name": "PEC",
-#             "email": "pec@yahoo.com",
-#             "enrolled": 14,
-#             "course": 3
-# },

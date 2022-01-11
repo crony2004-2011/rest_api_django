@@ -125,3 +125,6 @@ class Personfilterapi(ListAPIView):
     serializer_class = PersonSerializer
     # filter_backends = [DjangoFilterBackend]  # not-mandatory
     filter_fields = ['name']
+
+
+'''this is django rest-api'''
