@@ -4,3 +4,8 @@ exclude =
  __pycache__,
  manage.py,
  settings.py
+
+ language: ruby
+rvm:
+ - 2.2
+ - jruby

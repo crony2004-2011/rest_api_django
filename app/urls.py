@@ -4,12 +4,21 @@ from . import views
 from .views import *
 
 urlpatterns = [
-    path('', views.person_func),
-    path('<int:pk>/', views.update),
-    path('clients/', views.PersonViewAPI.as_view()),
-    path('clients-detail/<int:pk>/', views.PersonDetailViewAPI.as_view()),
-    path('clients-generic-create/', views.GenericAPI.as_view()),
-    path('clients-generic-create/<int:id>/', views.GenericAPIpk.as_view()),
-    #in generic views pk will get listed in the look_up filed attribute in get and put functions can interpret it differnetly
+    path('create/', views.personAPI.as_view()),
+    path('list/', views.persongetAPI.as_view()),
+    path('update/<int:pk>', views.personupdateAPI.as_view()),
+    path('retrieve/<int:pk>', views.personretieveAPI.as_view()),
+    path('update-retrieve-destroy/<int:pk>',
+         views.personupdateretievedestroyAPI.as_view()),
+    path('list-create/', views.createlistAPI.as_view()),
+    path('class/<int:pk>', views.Personclassapi.as_view()),
+    path('filter/', views.Personfilterapi.as_view()),
 ]
 
+# {
+#     "id": 10,
+#     "name": "PEC",
+#             "email": "pec@yahoo.com",
+#             "enrolled": 14,
+#             "course": 3
+# },
