@@ -134,5 +134,5 @@ def main():
     pass
 
 
-def test():
+def test1():
     pass
