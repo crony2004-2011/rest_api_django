@@ -29,7 +29,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 # ----------------------------------------GenericAPIView MIXINS-------------------------------------------
-
+#----------------------------------------------------------------------------------------------------------#
 
 class personAPI(GenericAPIView, CreateModelMixin):
     queryset = Person.objects.all()
@@ -128,3 +128,7 @@ class Personfilterapi(ListAPIView):
 
 
 '''this is django rest-api'''
+
+
+def main():
+    pass
