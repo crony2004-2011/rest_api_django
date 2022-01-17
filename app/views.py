@@ -158,13 +158,13 @@ def test6():
     pass
 
 
-<<<<<<< HEAD
 def test9():
-=======
+    pass
+
+
 def test7():
     pass
 
 
 def test8():
->>>>>>> main
     pass
