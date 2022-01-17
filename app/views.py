@@ -156,3 +156,7 @@ def test5():
 
 def test6():
     pass
+
+
+def test9():
+    pass
