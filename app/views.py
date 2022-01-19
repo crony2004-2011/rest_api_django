@@ -168,3 +168,7 @@ def test7():
 
 def test8():
     pass
+
+
+def test9():
+    print("function9")
