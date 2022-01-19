@@ -170,5 +170,14 @@ def test8():
     pass
 
 
+<<<<<<< HEAD
 def test9():
     print("function9")
+=======
+def test10():
+    print("function10")
+
+
+def test11():
+    print("function11")
+>>>>>>> main
