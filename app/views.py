@@ -164,3 +164,11 @@ def test7():
 
 def test8():
     pass
+
+
+def test10():
+    print("function10")
+
+
+def test11():
+    print("function11")
