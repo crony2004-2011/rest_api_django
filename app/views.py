@@ -170,16 +170,22 @@ def test8():
     pass
 
 
+<<<<<<< HEAD
 << << << < HEAD
 
 
+=======
+>>>>>>> main
 def test9():
     print("function9")
 
 
+<<<<<<< HEAD
 == == == =
 
 
+=======
+>>>>>>> main
 def test10():
     print("function10")
 
@@ -188,8 +194,13 @@ def test11():
     print("function11")
 
 
+<<<<<<< HEAD
 >>>>>> > main
 
 
 def test12():
     print("function12")
+=======
+def test13():
+    print("function13")
+>>>>>>> main
